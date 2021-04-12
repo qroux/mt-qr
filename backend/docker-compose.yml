@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:12.4
+    volumes:
+      - ./data/postgres:/data/postgres
+    ports:
+      - 5555:5432
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      PGDATA: /data/postgres
+      POSTGRES_DB: my_trello
