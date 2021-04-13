@@ -6,25 +6,25 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "prebuild": "../node_modules/.bin/rimraf dist",
-    "build": "../node_modules/.bin/nest build",
-    "format": "../node_modules/.bin/prettier --write \\\"src/**/*.ts\\\" \\\"test/**/*.ts\\\"",
-    "start": "../node_modules/.bin/nest start",
+    "prebuild": "node_modules/.bin/rimraf dist",
+    "build": "node_modules/.bin/nest build",
+    "format": "node_modules/.bin/prettier --write \\\"src/**/*.ts\\\" \\\"test/**/*.ts\\\"",
+    "start": "node_modules/.bin/nest start",
     "start:dev": "./node_modules/.bin/nest start --watch",
-    "start:debug": "../node_modules/.bin/nest start --debug --watch",
+    "start:debug": "node_modules/.bin/nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint": "../node_modules/.bin/eslint \\\"{src,apps,libs,test}/**/*.ts\\\" --fix",
-    "test": "../node_modules/.bin/jest",
-    "test:watch": "../node_modules/.bin/jest --watch",
-    "test:cov": "../node_modules/.bin/jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register ../node_modules/.bin/jest --runInBand",
-    "test:e2e": "../node_modules/.bin/jest --config ./test/jest-e2e.json",
-    "migrate": "../node_modules/.bin/typeorm migration:run -f dist/config/database.config.js",
-    "rollback": "../node_modules/.bin/typeorm migration:revert -f dist/config/database.config.js"
+    "lint": "node_modules/.bin/eslint \\\"{src,apps,libs,test}/**/*.ts\\\" --fix",
+    "test": "node_modules/.bin/jest",
+    "test:watch": "node_modules/.bin/jest --watch",
+    "test:cov": "node_modules/.bin/jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "node_modules/.bin/jest --config ./test/jest-e2e.json",
+    "migrate": "node_modules/.bin/typeorm migration:run -f dist/config/database.config.js",
+    "rollback": "node_modules/.bin/typeorm migration:revert -f dist/config/database.config.js"
   },
   "dependencies": {
     "@nestjs/common": "7.6.15",
-    "@nestjs/core": "^7.6.15",
+    "@nestjs/core": "7.6.15",
     "@nestjs/platform-express": "7.6.15",
     "pg": "^7.12.1",
     "reflect-metadata": "0.1.13",
@@ -68,7 +68,7 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
-    "coverageDirectory": "../coverage",
+    "coverageDirectory": "./coverage",
     "testEnvironment": "node"
   }
 }
