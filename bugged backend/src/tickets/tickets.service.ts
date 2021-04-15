@@ -17,7 +17,7 @@ export class TicketsService {
   }
 
   findAll() {
-    return `This action returns all tickets`;
+    return this.ticketsRepository.find();
   }
 
   findOne(id: number) {

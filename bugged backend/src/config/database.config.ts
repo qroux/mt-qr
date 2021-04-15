@@ -1,11 +1,11 @@
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
-export = {
+export default {
   type: 'postgres',
-  host: 'localhost',
-  port: parseInt('5555'),
-  username: 'root',
-  password: 'root',
+  host: '127.0.0.1',
+  port: parseInt('5432'),
+  username: 'nr',
+  password: 'azerty123',
   database: 'my_trello',
   migrations: [`${__dirname}/../database/migrations/*`],
   cli: {
