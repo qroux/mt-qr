@@ -1,4 +1,5 @@
-import { Injectable, Inject } from '@nestjs/common';
+import { Injectable, Inject, NotFoundException } from '@nestjs/common';
+import { exception } from 'console';
 import { constants } from 'src/constants';
 import { Repository } from 'typeorm';
 import { CreateTicketDto } from './dto/create-ticket.dto';
@@ -12,23 +13,39 @@ export class TicketsService {
     private ticketsRepository: Repository<Ticket>,
   ) {}
 
-  create(createTicketDto: CreateTicketDto) {
-    return 'This action adds a new ticket';
+  async create(createTicketDto: CreateTicketDto): Promise<Ticket> {
+    // CreateTicketDto class validators not triggered
+    return await this.ticketsRepository.save(createTicketDto);
   }
 
-  findAll() {
-    return this.ticketsRepository.find();
+  async findAll(): Promise<Ticket[]> {
+    return await this.ticketsRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} ticket`;
+  async findOne(id: number): Promise<Ticket> {
+    return await this.ticketsRepository.findOne(id);
   }
 
-  update(id: number, updateTicketDto: UpdateTicketDto) {
-    return `This action updates a #${id} ticket`;
+  async update(id: number, updateTicketDto: UpdateTicketDto): Promise<Ticket> {
+    const updatedTicket = await this.ticketsRepository.preload({
+      id,
+      ...updateTicketDto,
+    });
+
+    if (!updatedTicket) {
+      throw new NotFoundException(`UPDATE: Ticket at id:${id} does not exist`);
+    }
+
+    return await this.ticketsRepository.save(updatedTicket);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} ticket`;
+  async remove(id: number): Promise<Ticket> {
+    const ticketToRemove = await this.ticketsRepository.findOne(id);
+
+    if (!ticketToRemove) {
+      throw new NotFoundException(`DELETE: Ticket at id:${id} does not exist`);
+    }
+
+    return await this.ticketsRepository.remove(ticketToRemove);
   }
 }
