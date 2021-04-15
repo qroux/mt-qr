@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TicketsService } from './tickets.service';
 import { TicketsController } from './tickets.controller';
-import { ticketsProviders } from './tickets.providers';
 import { DatabaseModule } from 'src/database/database.module';
+import { ticketsProviders } from './tickets.providers';
 
 @Module({
   imports: [DatabaseModule],

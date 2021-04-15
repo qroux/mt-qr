@@ -2,6 +2,9 @@
 dist/
 node_modules/
 
+#persistent docker data
+data/
+
 # Logs
 logs
 *.log

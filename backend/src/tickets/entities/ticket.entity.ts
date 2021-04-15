@@ -12,10 +12,10 @@ export class Ticket {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ nullable: false, default: 'nouveau ticket' })
+  @Column({ default: 'new ticket' })
   title: string;
 
-  @Column()
+  @Column({ nullable: true })
   description: string;
 
   @Column({ type: 'enum', enum: TicketStatus, default: TicketStatus.TODO })

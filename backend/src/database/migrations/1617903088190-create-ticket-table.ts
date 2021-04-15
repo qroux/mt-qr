@@ -18,7 +18,10 @@ export class createTicketTable1617903088190 implements MigrationInterface {
             name: 'title',
             type: 'varchar',
             isNullable: false,
-            default: 'nouveau ticket',
+            // Default value field
+            // "value" or 'value' generates wrong sql query: expected DEFAULT "new ticket" => got DEFAULT new ticket
+            // => works with double + simple quotes "'string'"
+            default: "'new ticket'",
           },
           {
             name: 'description',
@@ -28,8 +31,9 @@ export class createTicketTable1617903088190 implements MigrationInterface {
           {
             name: 'status',
             type: 'enum',
-            isNullable: false,
-            default: TicketStatus.TODO,
+            enum: Object.keys(TicketStatus).map((k) => TicketStatus[k]),
+            enumName: 'statusEnum',
+            default: "'To Do'",
           },
         ],
       }),

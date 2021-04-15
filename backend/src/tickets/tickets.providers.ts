@@ -1,6 +1,6 @@
-import { constants } from 'src/constants';
-import { Connection } from 'typeorm';
+import { Connection, Repository } from 'typeorm';
 import { Ticket } from './entities/ticket.entity';
+import { constants } from '../constants';
 
 export const ticketsProviders = [
   {

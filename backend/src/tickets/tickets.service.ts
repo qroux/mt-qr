@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { Repository } from 'typeorm';
 import { constants } from 'src/constants';
+import { Repository } from 'typeorm';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { Ticket } from './entities/ticket.entity';
@@ -17,7 +17,7 @@ export class TicketsService {
   }
 
   findAll() {
-    return `This action returns all tickets`;
+    return this.ticketsRepository.find();
   }
 
   findOne(id: number) {
