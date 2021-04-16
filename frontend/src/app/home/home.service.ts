@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class HomeService {
-  constructor(private http: HttpClient) {}
+  url = 'http://localhost:3000/tickets';
+
+  constructor(private httpClient: HttpClient) {}
+
+  getTickets() {
+    return this.httpClient.get(this.url);
+  }
 }
