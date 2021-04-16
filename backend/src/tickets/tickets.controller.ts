@@ -10,16 +10,17 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { TicketsService } from './tickets.service';
-import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
 
 @Controller('tickets')
+@UsePipes(new ValidationPipe())
 export class TicketsController {
   constructor(private readonly ticketsService: TicketsService) {}
 
   @Post()
-  create(@Body() createTicketDto: CreateTicketDto) {
-    return this.ticketsService.create(createTicketDto);
+  create() {
+    // @Body not used => only default values => no dto
+    return this.ticketsService.create();
   }
 
   @Get()

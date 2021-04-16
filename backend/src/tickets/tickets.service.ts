@@ -1,8 +1,6 @@
 import { Injectable, Inject, NotFoundException } from '@nestjs/common';
-import { exception } from 'console';
 import { constants } from 'src/constants';
 import { Repository } from 'typeorm';
-import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { Ticket } from './entities/ticket.entity';
 
@@ -13,9 +11,8 @@ export class TicketsService {
     private ticketsRepository: Repository<Ticket>,
   ) {}
 
-  async create(createTicketDto: CreateTicketDto): Promise<Ticket> {
-    // CreateTicketDto class validators not triggered
-    return await this.ticketsRepository.save(createTicketDto);
+  async create(): Promise<Ticket> {
+    return await this.ticketsRepository.save({});
   }
 
   async findAll(): Promise<Ticket[]> {

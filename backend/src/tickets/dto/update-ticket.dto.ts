@@ -1,8 +1,8 @@
-import { IsDefined, IsOptional, IsString, IsEnum } from 'class-validator';
+import { IsOptional, IsString, IsEnum } from 'class-validator';
 import { TicketStatus } from '../entities/ticket.entity';
 
 export class UpdateTicketDto {
-  @IsDefined()
+  @IsOptional()
   @IsString()
   title: string;
 
@@ -11,6 +11,10 @@ export class UpdateTicketDto {
   description: string;
 
   @IsOptional()
-  @IsEnum(TicketStatus) // Not working
+  @IsEnum(TicketStatus, {
+    message: `status value must be within ${Object.keys(TicketStatus).map(
+      (k) => `'${TicketStatus[k]}'`,
+    )}`,
+  })
   status: string;
 }
