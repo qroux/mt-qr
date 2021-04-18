@@ -22,7 +22,7 @@ export class DialogComponent implements OnInit {
       form.value.title !== '' ? form.value : form.value.description;
 
     this.ticketService.createTicket(payload).subscribe((res) => {
-      this.ticketsRefetchService.notify(null);
+      this.ticketsRefetchService.notify(res);
     });
     this.dialogRef.close();
   }

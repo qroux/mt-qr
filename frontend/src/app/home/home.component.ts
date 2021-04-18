@@ -10,7 +10,7 @@ import { TicketsRefetchService } from '../ticketsRefetch.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
   tickets: any;
   ticketStatus = TicketStatus;
 
@@ -25,19 +25,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.tickets = res;
     });
 
-    this.ticketsRefetchService.obs.subscribe(() =>
-      this.homeService.getTickets().subscribe((res) => {
-        this.tickets = res;
-      })
-    );
-  }
-
-  ngOnDestroy() {
-    this.ticketsRefetchService.obs.subscribe(() =>
-      this.homeService.getTickets().subscribe((res) => {
-        this.tickets = res;
-      })
-    );
+    this.ticketsRefetchService.obs.subscribe((data) => {
+      this.tickets = [...this.tickets, data];
+    });
   }
 
   openDialog() {
