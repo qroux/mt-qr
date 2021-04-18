@@ -18,16 +18,27 @@
       {{ item.status }}
     </div>
     <div class="header__title">{{ item.title }}</div>
+
     <button
       mat-icon-button
       aria-label="Example icon button with a vertical three dot icon"
       class="header__icon"
-      (click)="onEdit()"
+      (click)="onDelete()"
     >
-      <mat-icon>more_vert</mat-icon>
+      <mat-icon>close</mat-icon>
     </button>
   </div>
   <div class="content">
     <p>{{ item.description }}</p>
   </div>
+  <mat-card-actions align="end">
+    <button
+      mat-stroked-button
+      aria-label="Example icon button with a vertical three dot icon"
+      class="action__btn"
+      (click)="onEdit()"
+    >
+      Edit
+    </button>
+  </mat-card-actions>
 </mat-card>

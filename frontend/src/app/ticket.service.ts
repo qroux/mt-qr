@@ -18,4 +18,8 @@ export class TicketService {
   updateTicket(id: number, formValues: Object) {
     return this.apiService.patch(id, formValues);
   }
+
+  deleteTicket(id: number) {
+    return this.apiService.delete(id);
+  }
 }
