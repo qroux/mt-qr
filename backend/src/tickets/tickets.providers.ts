@@ -1,4 +1,4 @@
-import { Connection, Repository } from 'typeorm';
+import { Connection } from 'typeorm';
 import { Ticket } from './entities/ticket.entity';
 import { constants } from '../constants';
 

@@ -1,0 +1,16 @@
+<mat-card class="card">
+  <div class="header">
+    <div class="header__status">{{ item.status }}</div>
+    <div class="header__title">{{ item.title }}</div>
+    <button
+      mat-icon-button
+      aria-label="Example icon button with a vertical three dot icon"
+      class="header__icon"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <p>{{ item.description }}</p>
+  </div>
+</mat-card>

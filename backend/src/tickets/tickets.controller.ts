@@ -10,7 +10,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { TicketsService } from './tickets.service';
-import { UpdateTicketDto } from './dto/update-ticket.dto';
+import { TicketDto } from './dto/ticket.dto';
 
 @Controller('tickets')
 @UsePipes(new ValidationPipe())
@@ -18,9 +18,8 @@ export class TicketsController {
   constructor(private readonly ticketsService: TicketsService) {}
 
   @Post()
-  create() {
-    // @Body not used => only default values => no dto
-    return this.ticketsService.create();
+  create(@Body() ticketDto: TicketDto) {
+    return this.ticketsService.create(ticketDto);
   }
 
   @Get()
@@ -34,8 +33,8 @@ export class TicketsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto) {
-    return this.ticketsService.update(+id, updateTicketDto);
+  update(@Param('id') id: string, @Body() ticketDto: TicketDto) {
+    return this.ticketsService.update(+id, ticketDto);
   }
 
   @Delete(':id')

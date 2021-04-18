@@ -12,4 +12,8 @@ export class HomeService {
   getTickets() {
     return this.httpClient.get(this.url);
   }
+
+  createTicket() {
+    return this.httpClient.post(this.url, {});
+  }
 }

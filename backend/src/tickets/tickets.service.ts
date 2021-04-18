@@ -1,7 +1,7 @@
 import { Injectable, Inject, NotFoundException } from '@nestjs/common';
 import { constants } from 'src/constants';
 import { Repository } from 'typeorm';
-import { UpdateTicketDto } from './dto/update-ticket.dto';
+import { TicketDto } from './dto/ticket.dto';
 import { Ticket } from './entities/ticket.entity';
 
 @Injectable()
@@ -11,8 +11,8 @@ export class TicketsService {
     private ticketsRepository: Repository<Ticket>,
   ) {}
 
-  async create(): Promise<Ticket> {
-    return await this.ticketsRepository.save({});
+  async create(ticketDto: TicketDto): Promise<Ticket> {
+    return await this.ticketsRepository.save(ticketDto);
   }
 
   async findAll(): Promise<Ticket[]> {
@@ -23,7 +23,7 @@ export class TicketsService {
     return await this.ticketsRepository.findOne(id);
   }
 
-  async update(id: number, updateTicketDto: UpdateTicketDto): Promise<Ticket> {
+  async update(id: number, updateTicketDto: TicketDto): Promise<Ticket> {
     const updatedTicket = await this.ticketsRepository.preload({
       id,
       ...updateTicketDto,

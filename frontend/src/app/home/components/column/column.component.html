@@ -1,0 +1,6 @@
+<div class="column">
+  <div class="column__title">{{ title }}</div>
+  <div *ngFor="let ticket of tickets">
+    <ticket-card [item]="ticket"></ticket-card>
+  </div>
+</div>

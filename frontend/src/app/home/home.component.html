@@ -1,1 +1,23 @@
-<p>home works!</p>
+<main class="page-wrapper">
+  <button mat-flat-button color="primary" (click)="openDialog()">
+    + Create Ticket
+  </button>
+  <div class="columns-grid">
+    <ticket-column
+      [title]="ticketStatus.TODO"
+      [tickets]="tickets | ticketFilter: ticketStatus.TODO"
+    ></ticket-column>
+    <ticket-column
+      [title]="ticketStatus.INPROGRESS"
+      [tickets]="tickets | ticketFilter: ticketStatus.INPROGRESS"
+    ></ticket-column>
+    <ticket-column
+      [title]="ticketStatus.TOVALIDATE"
+      [tickets]="tickets | ticketFilter: ticketStatus.TOVALIDATE"
+    ></ticket-column>
+    <ticket-column
+      [title]="ticketStatus.COMPLETE"
+      [tickets]="tickets | ticketFilter: ticketStatus.COMPLETE"
+    ></ticket-column>
+  </div>
+</main>

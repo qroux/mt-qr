@@ -1,7 +1,7 @@
 import { IsOptional, IsString, IsEnum } from 'class-validator';
 import { TicketStatus } from '../entities/ticket.entity';
 
-export class UpdateTicketDto {
+export class TicketDto {
   @IsOptional()
   @IsString()
   title: string;
