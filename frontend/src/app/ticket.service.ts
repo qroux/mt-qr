@@ -14,4 +14,8 @@ export class TicketService {
   createTicket(formValues: Object) {
     return this.apiService.post(formValues);
   }
+
+  updateTicket(id: number, formValues: Object) {
+    return this.apiService.patch(id, formValues);
+  }
 }

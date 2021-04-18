@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Ticket } from 'src/app/models/ticket';
 
 @Component({
@@ -6,11 +6,7 @@ import { Ticket } from 'src/app/models/ticket';
   templateUrl: './column.component.html',
   styleUrls: ['./column.component.scss'],
 })
-export class ColumnComponent implements OnInit {
+export class ColumnComponent {
   @Input() title: string = '';
   @Input() tickets: Ticket[] = [];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

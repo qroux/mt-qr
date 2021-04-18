@@ -12,28 +12,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    // background-color: #ef709d;
     font-weight: 400;
     color: white;
-
     padding: 0 5px;
     border-radius: 3px;
     flex-shrink: 0;
   }
-
   &__title {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 15px;
-
     font-weight: 400;
     font-size: medium;
     max-width: 60%;
     word-break: break-word;
   }
-
   &__icon {
     margin-left: auto;
   }

@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { HomeService } from './home.service';
+import { Component, OnInit } from '@angular/core';
 import { TicketStatus } from '../pipes/ticketStatus';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { TicketsRefetchService } from '../ticketsRefetch.service';
+import { TicketService } from '../ticket.service';
 
 @Component({
   selector: 'app-home',
@@ -15,26 +15,28 @@ export class HomeComponent implements OnInit {
   ticketStatus = TicketStatus;
 
   constructor(
-    private homeService: HomeService,
+    private ticketService: TicketService,
     public dialog: MatDialog,
     private ticketsRefetchService: TicketsRefetchService
   ) {}
 
   ngOnInit() {
-    this.homeService.getTickets().subscribe((res) => {
+    this.ticketService.getTickets().subscribe((res) => {
       this.tickets = res;
     });
 
     this.ticketsRefetchService.obs.subscribe((data) => {
-      this.tickets = [...this.tickets, data];
+      if (data.isEdit) {
+        this.ticketService.getTickets().subscribe((res) => {
+          this.tickets = res;
+        });
+      } else {
+        this.tickets = [...this.tickets, data];
+      }
     });
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(DialogComponent);
-  }
-
-  editDialog() {
-    const dialogRef = this.dialog.open(DialogComponent);
+    this.dialog.open(DialogComponent);
   }
 }

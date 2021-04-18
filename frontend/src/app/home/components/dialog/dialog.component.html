@@ -2,7 +2,13 @@
   <mat-dialog-content>
     <mat-form-field appearance="standard" class="full-width">
       <mat-label>Title</mat-label>
-      <input matInput placeholder="New Ticket" ngModel name="title" />
+      <input
+        matInput
+        placeholder="New Ticket"
+        [ngModel]="formData.title"
+        name="title"
+        required
+      />
     </mat-form-field>
 
     <mat-form-field appearance="standard" class="full-width">
@@ -10,66 +16,31 @@
       <input
         matInput
         placeholder="Add description"
-        ngModel
+        [ngModel]="formData.description"
         name="description"
       />
     </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select [ngModel]="formData.status" name="status">
+        <mat-option
+          *ngFor="let statusValue of ticketStatus"
+          [value]="statusValue"
+        >
+          {{ statusValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button type="submit">Create</button>
+    <button
+      mat-flat-button
+      type="submit"
+      [disabled]="f.invalid"
+      color="primary"
+    >
+      {{ isEdit ? 'Save' : 'Create' }}
+    </button>
     <button mat-button (click)="onClose()" type="button">Cancel</button>
   </mat-dialog-actions>
 </form>
-
-<!-- <form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi" />
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Leave a comment</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-  </mat-form-field>
-</form> -->
-
-<!-- <form #f="ngForm" (submit)="onSubmit(f)" class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi" />
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Leave a comment</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-  </mat-form-field>
-  <mat-dialog-actions>
-    <button mat-button type="submit">Add</button>
-    <button mat-button type="button" mat-dialog-close (click)="onClose()">
-      Cancel
-    </button>
-  </mat-dialog-actions>
-</form> -->
-
-<!-- <form class="form" (submit)="onSubmit()">
-  <mat-form-field class="form__input">
-    <mat-label>Title</mat-label>
-    <input matInput placeholder="New Ticket" ngModel formControlName="title" />
-  </mat-form-field>
-
-  <mat-form-field class="form__input">
-    <mat-label>Description</mat-label>
-    <textarea
-      matInput
-      placeholder="Add description"
-      ngModel
-      formControlName="description"
-    ></textarea>
-  </mat-form-field>
-  <mat-dialog-actions>
-    <button mat-flat-button type="submit" color="primary">Add</button>
-    <button mat-button type="button" mat-dialog-close color="disabled">
-      Cancel
-    </button>
-  </mat-dialog-actions>
-</form> -->

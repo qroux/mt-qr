@@ -17,11 +17,11 @@ export class ApiService {
     return this.httpClient.post(this.apiUrl, payload);
   }
 
-  patch(payload: Object) {
-    return this.httpClient.patch(this.apiUrl, payload);
+  patch(id: number, payload: Object) {
+    return this.httpClient.patch(`${this.apiUrl}/${id}`, payload);
   }
 
   delete(id: number) {
-    return this.httpClient.delete(this.apiUrl + id);
+    return this.httpClient.delete(`${this.apiUrl}/${id}`);
   }
 }
