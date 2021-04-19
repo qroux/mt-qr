@@ -1,5 +1,5 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
-import { TicketStatus } from '../../tickets/entities/ticket.entity';
+import { TicketStatus } from '../../modules/tickets/entities/ticket.entity';
 
 export class createTicketTable1617903088190 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
