@@ -1,5 +1,5 @@
 import { ReplaySubject, Observable } from 'rxjs';
-import { Ticket } from './models/ticket';
+import { Ticket } from '../models/ticket';
 
 export class TicketsRefetchService {
   subject: ReplaySubject<Ticket> = new ReplaySubject();

@@ -3,8 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Ticket } from 'src/app/models/ticket';
 import { TicketStatus } from 'src/app/pipes/ticketStatus';
-import { TicketService } from 'src/app/ticket.service';
-import { TicketsRefetchService } from 'src/app/ticketsRefetch.service';
+import { TicketService } from 'src/app/services/ticket.service';
+import { TicketsRefetchService } from 'src/app/services/ticketsRefetch.service';
 
 @Component({
   selector: 'app-dialog',

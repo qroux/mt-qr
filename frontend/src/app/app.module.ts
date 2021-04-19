@@ -22,12 +22,13 @@ import { MatSelectModule } from '@angular/material/select';
 //COMPONENTS
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './layout/navbar/navbar.component';
 import { CardComponent } from './home/components/card/card.component';
-import { TicketFilterPipe } from './pipes/ticket-filter.pipe';
 import { ColumnComponent } from './home/components/column/column.component';
 import { DialogComponent } from './home/components/dialog/dialog.component';
-import { TicketsRefetchService } from './ticketsRefetch.service';
+
+import { TicketFilterPipe } from './pipes/ticket-filter.pipe';
+import { TicketsRefetchService } from './services/ticketsRefetch.service';
 
 @NgModule({
   declarations: [
