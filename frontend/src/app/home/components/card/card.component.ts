@@ -12,6 +12,12 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class CardComponent {
   @Input() item!: Ticket;
+  colors: { [key: string]: string } = {
+    'To Do': 'grey',
+    'In Progress': '#fb6800',
+    'To Validate': '#b7b705',
+    Complete: 'green',
+  };
 
   constructor(
     public dialog: MatDialog,

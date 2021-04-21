@@ -2,18 +2,7 @@
   <div class="header">
     <div
       class="header__status"
-      [ngStyle]="{
-        backgroundColor:
-          item.status === 'To Do'
-            ? 'grey'
-            : item.status === 'In Progress'
-            ? '#fb6800'
-            : item.status === 'To Validate'
-            ? '#b7b705'
-            : item.status === 'Complete'
-            ? 'green'
-            : ''
-      }"
+      [ngStyle]="{ backgroundColor: colors[item.status] }"
     >
       {{ item.status }}
     </div>
