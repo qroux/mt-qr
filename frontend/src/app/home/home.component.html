@@ -4,20 +4,9 @@
   </button>
   <div class="columns-grid">
     <ticket-column
-      [title]="ticketStatus.TODO"
-      [tickets]="tickets | ticketFilter: ticketStatus.TODO"
-    ></ticket-column>
-    <ticket-column
-      [title]="ticketStatus.INPROGRESS"
-      [tickets]="tickets | ticketFilter: ticketStatus.INPROGRESS"
-    ></ticket-column>
-    <ticket-column
-      [title]="ticketStatus.TOVALIDATE"
-      [tickets]="tickets | ticketFilter: ticketStatus.TOVALIDATE"
-    ></ticket-column>
-    <ticket-column
-      [title]="ticketStatus.COMPLETE"
-      [tickets]="tickets | ticketFilter: ticketStatus.COMPLETE"
+      *ngFor="let type of ticketStatus"
+      [title]="type"
+      [tickets]="tickets | ticketFilter: type"
     ></ticket-column>
   </div>
 </main>

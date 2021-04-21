@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TicketStatus } from '../pipes/ticketStatus';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { TicketsRefetchService } from '../services/ticketsRefetch.service';
@@ -12,7 +11,7 @@ import { TicketService } from '../services/ticket.service';
 })
 export class HomeComponent implements OnInit {
   tickets: any;
-  ticketStatus = TicketStatus;
+  ticketStatus = ['To Do', 'In Progress', 'To Validate', 'Complete'];
 
   constructor(
     private ticketService: TicketService,
