@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TicketService } from 'src/app/services/ticket.service';
 import { TicketsRefetchService } from 'src/app/services/ticketsRefetch.service';
-import { Ticket } from '../../../models/ticket';
+import { Ticket } from '../../../../models/ticket';
 import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({

@@ -13,7 +13,7 @@ import { TicketsRefetchService } from 'src/app/services/ticketsRefetch.service';
 })
 export class DialogComponent implements OnInit {
   isEdit: boolean = false;
-  ticketStatus = ['To Do', 'In Progress', 'To Validate', 'Complete'];
+  ticketStatus: TicketStatus[] = Object.values(TicketStatus);
 
   formData = {
     title: '',
